@@ -1,0 +1,57 @@
+-- ATL transformation module to convert Families models to Persons models.
+module FamiliesToPersons_All;
+
+create OUT : Persons from IN : Families;
+
+-- Helper to derive the last name of a Families member.
+helper context Families!Member def: familyLastName() : String =
+  if not self.familyFather.oclIsUndefined() then self.familyFather.lastName
+  else 
+    if not self.familyMother.oclIsUndefined() then self.familyMother.lastName
+    else 
+      if not self.familySon.oclIsUndefined() then self.familySon.lastName
+      else 
+        self.familyDaughter.lastName
+      endif
+    endif
+  endif;
+
+-- Helper to determine if a Families member is female.
+helper context Families!Member def: isFemale() : Boolean =
+  if not self.familyMother.oclIsUndefined() then true
+  else 
+    if not self.familyDaughter.oclIsUndefined() then true
+    else false
+    endif
+  endif;
+
+-- Helper to determine if a Families member is male.
+helper context Families!Member def: isMale() : Boolean =
+  if not self.familyFather.oclIsUndefined() then true
+  else 
+    if not self.familySon.oclIsUndefined() then true
+    else false
+    endif
+  endif;
+
+-- Transform a Families member to a Persons male person when the helper
+-- isMale evaluates to true.
+rule Member2Male {
+  from 
+    s : Families!Member (s.isMale())
+  to
+    t : Persons!Male (
+      fullName <- s.firstName + ' ' + s.familyLastName()
+    )
+}
+
+-- Transform a Families member to a Persons female person when the helper
+-- isFemale evaluates to true.
+rule Member2Female {
+  from 
+    s : Families!Member (s.isFemale())
+  to
+    t : Persons!Female (
+      fullName <- s.firstName + ' ' + s.familyLastName()
+    )
+}

@@ -1,0 +1,4 @@
+Create a transformation module named **NetworkToGraph_All** that maps elements from the **Network** model to the **Graph** model.  
+Define a rule **Component2Entity** that transforms each **Component** into an **Entity** with the same name.  
+Define a rule **System2Root** that transforms a **System** into a **Root**, collecting its **components** and converting them into **entities** using the **Component2Entity** rule.  
+Define a rule **Link2Link** that transforms a **Link** into a **Link** in the target model, mapping its **components** into **entities** via **Component2Entity**.
