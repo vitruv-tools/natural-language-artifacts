@@ -1,0 +1,15 @@
+# VS Code
+.vscode/
+
+# Maven
+target/
+*.log
+.mvn/wrapper/*.jar
+.flattened-pom.xml
+dependency-reduced-pom.xml
+
+# Generated Files
+**/src-gen/*
+**/xtend-gen/*
+.settings
+**/*.java._trace
