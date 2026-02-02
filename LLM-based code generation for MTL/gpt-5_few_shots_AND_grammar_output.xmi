@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="ASCII"?>
+<toplevelelements:ReactionsFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:language="http://vitruv.tools/dsls/reactions/language" xmlns:toplevelelements="http://vitruv.tools/dsls/reactions/language/toplevelelements" xmlns:types="http://www.eclipse.org/xtext/common/JavaVMTypes" xmlns:xbase="http://www.eclipse.org/xtext/xbase/Xbase">
+  <metamodelImports name="persons">
+    <package href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/persons.ecore#/"/>
+  </metamodelImports>
+  <metamodelImports name="families">
+    <package href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/families.ecore#/"/>
+  </metamodelImports>
+  <reactionsSegments name="familiesToPersons" fromMetamodels="//@metamodelImports.1" toMetamodels="//@metamodelImports.0">
+    <reactions name="CreatedFather">
+      <trigger xsi:type="language:ModelElementChange">
+        <changeType xsi:type="language:ElementReplacementChangeType">
+          <feature metamodel="//@metamodelImports.1">
+            <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/families.ecore#//Family"/>
+            <feature href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/families.ecore#//Family/father"/>
+          </feature>
+        </changeType>
+      </trigger>
+      <callRoutine>
+        <code xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+          <feature xsi:type="types:JvmOperation" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/0/@members.1"/>
+          <featureCallArguments xsi:type="xbase:XFeatureCall">
+            <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/6/@members.2/@members.1/@parameters.3"/>
+          </featureCallArguments>
+        </code>
+      </callRoutine>
+    </reactions>
+    <routines name="handleCreatedFather">
+      <input>
+        <modelInputElements metamodel="//@metamodelImports.1" name="newMember">
+          <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/families.ecore#//Member"/>
+        </modelInputElements>
+      </input>
+      <updateBlock>
+        <code xsi:type="xbase:XBlockExpression">
+          <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+            <feature xsi:type="types:JvmOperation" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/0/@members.2"/>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/2/@members.2/@members.1/@parameters.0"/>
+            </featureCallArguments>
+          </expressions>
+          <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+            <feature xsi:type="types:JvmOperation" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/0/@members.3"/>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/2/@members.2/@members.1/@parameters.0"/>
+            </featureCallArguments>
+          </expressions>
+        </code>
+      </updateBlock>
+    </routines>
+    <routines name="updateNameAndCorrespondencesOfCorrespondingPerson">
+      <input>
+        <modelInputElements metamodel="//@metamodelImports.1" name="member">
+          <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/families.ecore#//Member"/>
+        </modelInputElements>
+      </input>
+      <matchBlock>
+        <matchStatements xsi:type="language:RetrieveModelElement" name="existingPerson">
+          <elementType metamodel="//@metamodelImports.0">
+            <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/persons.ecore#//Person"/>
+          </elementType>
+          <correspondenceSource xsi:type="xbase:XFeatureCall">
+            <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.3/@members.2/@parameters.0"/>
+          </correspondenceSource>
+          <retrievalType xsi:type="language:RetrieveOneModelElement"/>
+        </matchStatements>
+      </matchBlock>
+      <updateBlock>
+        <code xsi:type="xbase:XBlockExpression">
+          <expressions xsi:type="xbase:XVariableDeclaration" name="fam">
+            <right xsi:type="xbase:XIfExpression">
+              <if xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|20"/>
+                <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|21"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                  </memberCallTarget>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XNullLiteral"/>
+              </if>
+              <then xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|23"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                </memberCallTarget>
+              </then>
+              <else xsi:type="xbase:XIfExpression">
+                <if xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|25"/>
+                  <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|26"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                    </memberCallTarget>
+                  </leftOperand>
+                  <rightOperand xsi:type="xbase:XNullLiteral"/>
+                </if>
+                <then xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|28"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                  </memberCallTarget>
+                </then>
+                <else xsi:type="xbase:XIfExpression">
+                  <if xsi:type="xbase:XBinaryOperation">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|30"/>
+                    <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                      <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|31"/>
+                      <memberCallTarget xsi:type="xbase:XFeatureCall">
+                        <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                      </memberCallTarget>
+                    </leftOperand>
+                    <rightOperand xsi:type="xbase:XNullLiteral"/>
+                  </if>
+                  <then xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|33"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                    </memberCallTarget>
+                  </then>
+                  <else xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|35"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                    </memberCallTarget>
+                  </else>
+                </else>
+              </else>
+            </right>
+          </expressions>
+          <expressions xsi:type="xbase:XVariableDeclaration" name="first">
+            <right xsi:type="xbase:XIfExpression">
+              <if xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|37"/>
+                <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|38"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                  </memberCallTarget>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XNullLiteral"/>
+              </if>
+              <then xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|40"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                </memberCallTarget>
+              </then>
+              <else xsi:type="xbase:XStringLiteral" value=""/>
+            </right>
+          </expressions>
+          <expressions xsi:type="xbase:XVariableDeclaration" name="last">
+            <right xsi:type="xbase:XIfExpression">
+              <if xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|42"/>
+                <leftOperand xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|43"/>
+                  <leftOperand xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.1/@updateBlock/@code/@expressions.0"/>
+                  <rightOperand xsi:type="xbase:XNullLiteral"/>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|45"/>
+                  <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|46"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.1/@updateBlock/@code/@expressions.0"/>
+                  </leftOperand>
+                  <rightOperand xsi:type="xbase:XNullLiteral"/>
+                </rightOperand>
+              </if>
+              <then xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|48"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.1/@updateBlock/@code/@expressions.0"/>
+              </then>
+              <else xsi:type="xbase:XStringLiteral" value=""/>
+            </right>
+          </expressions>
+          <expressions xsi:type="xbase:XVariableDeclaration" name="full">
+            <right xsi:type="xbase:XMemberFeatureCall">
+              <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|50"/>
+              <memberCallTarget xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|51"/>
+                <leftOperand xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|52"/>
+                  <leftOperand xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.1/@updateBlock/@code/@expressions.1"/>
+                  <rightOperand xsi:type="xbase:XStringLiteral" value=" "/>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.1/@updateBlock/@code/@expressions.2"/>
+              </memberCallTarget>
+            </right>
+          </expressions>
+          <expressions xsi:type="xbase:XIfExpression">
+            <if xsi:type="xbase:XBinaryOperation">
+              <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|55"/>
+              <leftOperand xsi:type="xbase:XFeatureCall">
+                <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.1"/>
+              </leftOperand>
+              <rightOperand xsi:type="xbase:XNullLiteral"/>
+            </if>
+            <then xsi:type="xbase:XBlockExpression">
+              <expressions xsi:type="xbase:XAssignment">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|57"/>
+                <assignable xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.1"/>
+                </assignable>
+                <value xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.1/@updateBlock/@code/@expressions.3"/>
+              </expressions>
+              <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+                <feature xsi:type="types:JvmOperation" href="java:/Objects/tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine#tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine$Update.addCorrespondenceBetween(org.eclipse.emf.ecore.EObject,org.eclipse.emf.ecore.EObject)"/>
+                <featureCallArguments xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.1"/>
+                </featureCallArguments>
+                <featureCallArguments xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.0"/>
+                </featureCallArguments>
+              </expressions>
+              <expressions xsi:type="xbase:XIfExpression">
+                <if xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|63"/>
+                  <leftOperand xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.1/@updateBlock/@code/@expressions.0"/>
+                  <rightOperand xsi:type="xbase:XNullLiteral"/>
+                </if>
+                <then xsi:type="xbase:XBlockExpression">
+                  <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+                    <feature xsi:type="types:JvmOperation" href="java:/Objects/tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine#tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine$Update.addCorrespondenceBetween(org.eclipse.emf.ecore.EObject,org.eclipse.emf.ecore.EObject)"/>
+                    <featureCallArguments xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/3/@members.4/@members.1/@parameters.1"/>
+                    </featureCallArguments>
+                    <featureCallArguments xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.1/@updateBlock/@code/@expressions.0"/>
+                  </expressions>
+                </then>
+              </expressions>
+            </then>
+          </expressions>
+        </code>
+      </updateBlock>
+    </routines>
+    <routines name="createMaleFromNewMember">
+      <input>
+        <modelInputElements metamodel="//@metamodelImports.1" name="newMember">
+          <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/families.ecore#//Member"/>
+        </modelInputElements>
+      </input>
+      <matchBlock>
+        <matchStatements xsi:type="language:RequireAbscenceOfModelElement">
+          <elementType metamodel="//@metamodelImports.0">
+            <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/persons.ecore#//Male"/>
+          </elementType>
+          <correspondenceSource xsi:type="xbase:XFeatureCall">
+            <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/4/@members.3/@members.2/@parameters.0"/>
+          </correspondenceSource>
+        </matchStatements>
+      </matchBlock>
+      <updateBlock>
+        <code xsi:type="xbase:XBlockExpression">
+          <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+            <feature xsi:type="types:JvmOperation" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/0/@members.4"/>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/4/@members.4/@members.1/@parameters.0"/>
+            </featureCallArguments>
+          </expressions>
+        </code>
+      </updateBlock>
+    </routines>
+    <routines name="createMale">
+      <input>
+        <modelInputElements metamodel="//@metamodelImports.1" name="member">
+          <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/families.ecore#//Member"/>
+        </modelInputElements>
+      </input>
+      <matchBlock>
+        <matchStatements xsi:type="language:RetrieveModelElement" name="personRegister">
+          <elementType metamodel="//@metamodelImports.0">
+            <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/persons.ecore#//PersonRegister"/>
+          </elementType>
+          <correspondenceSource xsi:type="xbase:XIfExpression">
+            <if xsi:type="xbase:XBinaryOperation">
+              <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|79"/>
+              <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|80"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.4/@members.2/@parameters.0"/>
+                </memberCallTarget>
+              </leftOperand>
+              <rightOperand xsi:type="xbase:XNullLiteral"/>
+            </if>
+            <then xsi:type="xbase:XMemberFeatureCall">
+              <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|82"/>
+              <memberCallTarget xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|83"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.4/@members.2/@parameters.0"/>
+                </memberCallTarget>
+              </memberCallTarget>
+            </then>
+            <else xsi:type="xbase:XIfExpression">
+              <if xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|85"/>
+                <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|86"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.4/@members.2/@parameters.0"/>
+                  </memberCallTarget>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XNullLiteral"/>
+              </if>
+              <then xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|88"/>
+                <memberCallTarget xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|89"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.4/@members.2/@parameters.0"/>
+                  </memberCallTarget>
+                </memberCallTarget>
+              </then>
+              <else xsi:type="xbase:XIfExpression">
+                <if xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|91"/>
+                  <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|92"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.4/@members.2/@parameters.0"/>
+                    </memberCallTarget>
+                  </leftOperand>
+                  <rightOperand xsi:type="xbase:XNullLiteral"/>
+                </if>
+                <then xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|94"/>
+                  <memberCallTarget xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|95"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.4/@members.2/@parameters.0"/>
+                    </memberCallTarget>
+                  </memberCallTarget>
+                </then>
+                <else xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|97"/>
+                  <memberCallTarget xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|98"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.4/@members.2/@parameters.0"/>
+                    </memberCallTarget>
+                  </memberCallTarget>
+                </else>
+              </else>
+            </else>
+          </correspondenceSource>
+          <retrievalType xsi:type="language:RetrieveOneModelElement"/>
+        </matchStatements>
+      </matchBlock>
+      <createBlock>
+        <createStatements metamodel="//@metamodelImports.0" name="newMale">
+          <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/persons.ecore#//Male"/>
+        </createStatements>
+      </createBlock>
+      <updateBlock>
+        <code xsi:type="xbase:XBlockExpression">
+          <expressions xsi:type="xbase:XVariableDeclaration" name="fam">
+            <right xsi:type="xbase:XIfExpression">
+              <if xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|102"/>
+                <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|103"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                  </memberCallTarget>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XNullLiteral"/>
+              </if>
+              <then xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|105"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                </memberCallTarget>
+              </then>
+              <else xsi:type="xbase:XIfExpression">
+                <if xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|107"/>
+                  <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|108"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                    </memberCallTarget>
+                  </leftOperand>
+                  <rightOperand xsi:type="xbase:XNullLiteral"/>
+                </if>
+                <then xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|110"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                  </memberCallTarget>
+                </then>
+                <else xsi:type="xbase:XIfExpression">
+                  <if xsi:type="xbase:XBinaryOperation">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|112"/>
+                    <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                      <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|113"/>
+                      <memberCallTarget xsi:type="xbase:XFeatureCall">
+                        <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                      </memberCallTarget>
+                    </leftOperand>
+                    <rightOperand xsi:type="xbase:XNullLiteral"/>
+                  </if>
+                  <then xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|115"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                    </memberCallTarget>
+                  </then>
+                  <else xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|117"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall">
+                      <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                    </memberCallTarget>
+                  </else>
+                </else>
+              </else>
+            </right>
+          </expressions>
+          <expressions xsi:type="xbase:XVariableDeclaration" name="first">
+            <right xsi:type="xbase:XIfExpression">
+              <if xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|119"/>
+                <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|120"/>
+                  <memberCallTarget xsi:type="xbase:XFeatureCall">
+                    <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                  </memberCallTarget>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XNullLiteral"/>
+              </if>
+              <then xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|122"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+                </memberCallTarget>
+              </then>
+              <else xsi:type="xbase:XStringLiteral" value=""/>
+            </right>
+          </expressions>
+          <expressions xsi:type="xbase:XVariableDeclaration" name="last">
+            <right xsi:type="xbase:XIfExpression">
+              <if xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|124"/>
+                <leftOperand xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|125"/>
+                  <leftOperand xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.3/@updateBlock/@code/@expressions.0"/>
+                  <rightOperand xsi:type="xbase:XNullLiteral"/>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|127"/>
+                  <leftOperand xsi:type="xbase:XMemberFeatureCall">
+                    <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|128"/>
+                    <memberCallTarget xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.3/@updateBlock/@code/@expressions.0"/>
+                  </leftOperand>
+                  <rightOperand xsi:type="xbase:XNullLiteral"/>
+                </rightOperand>
+              </if>
+              <then xsi:type="xbase:XMemberFeatureCall">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|130"/>
+                <memberCallTarget xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.3/@updateBlock/@code/@expressions.0"/>
+              </then>
+              <else xsi:type="xbase:XStringLiteral" value=""/>
+            </right>
+          </expressions>
+          <expressions xsi:type="xbase:XAssignment">
+            <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|132"/>
+            <assignable xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.2"/>
+            </assignable>
+            <value xsi:type="xbase:XMemberFeatureCall">
+              <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|134"/>
+              <memberCallTarget xsi:type="xbase:XBinaryOperation">
+                <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|135"/>
+                <leftOperand xsi:type="xbase:XBinaryOperation">
+                  <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|136"/>
+                  <leftOperand xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.3/@updateBlock/@code/@expressions.1"/>
+                  <rightOperand xsi:type="xbase:XStringLiteral" value=" "/>
+                </leftOperand>
+                <rightOperand xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.3/@updateBlock/@code/@expressions.2"/>
+              </memberCallTarget>
+            </value>
+          </expressions>
+          <expressions xsi:type="xbase:XBinaryOperation">
+            <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|139"/>
+            <leftOperand xsi:type="xbase:XMemberFeatureCall">
+              <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|140"/>
+              <memberCallTarget xsi:type="xbase:XFeatureCall">
+                <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.1"/>
+              </memberCallTarget>
+            </leftOperand>
+            <rightOperand xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.2"/>
+            </rightOperand>
+          </expressions>
+          <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+            <feature xsi:type="types:JvmOperation" href="java:/Objects/tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine#tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine$Update.addCorrespondenceBetween(org.eclipse.emf.ecore.EObject,org.eclipse.emf.ecore.EObject)"/>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.2"/>
+            </featureCallArguments>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.0"/>
+            </featureCallArguments>
+          </expressions>
+          <expressions xsi:type="xbase:XIfExpression">
+            <if xsi:type="xbase:XBinaryOperation">
+              <feature xsi:type="types:JvmVoid" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#|146"/>
+              <leftOperand xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.3/@updateBlock/@code/@expressions.0"/>
+              <rightOperand xsi:type="xbase:XNullLiteral"/>
+            </if>
+            <then xsi:type="xbase:XBlockExpression">
+              <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+                <feature xsi:type="types:JvmOperation" href="java:/Objects/tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine#tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine$Update.addCorrespondenceBetween(org.eclipse.emf.ecore.EObject,org.eclipse.emf.ecore.EObject)"/>
+                <featureCallArguments xsi:type="xbase:XFeatureCall">
+                  <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gpt-5/few_shots_AND_grammar/FamiliesToPersons_CreatedFather.reactions#/5/@members.6/@members.1/@parameters.2"/>
+                </featureCallArguments>
+                <featureCallArguments xsi:type="xbase:XFeatureCall" feature="//@reactionsSegments.0/@routines.3/@updateBlock/@code/@expressions.0"/>
+              </expressions>
+            </then>
+          </expressions>
+        </code>
+      </updateBlock>
+    </routines>
+  </reactionsSegments>
+</toplevelelements:ReactionsFile>

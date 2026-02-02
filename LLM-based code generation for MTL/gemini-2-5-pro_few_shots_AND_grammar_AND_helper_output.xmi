@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ASCII"?>
+<toplevelelements:ReactionsFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:language="http://vitruv.tools/dsls/reactions/language" xmlns:toplevelelements="http://vitruv.tools/dsls/reactions/language/toplevelelements" xmlns:types="http://www.eclipse.org/xtext/common/JavaVMTypes" xmlns:xbase="http://www.eclipse.org/xtext/xbase/Xbase">
+  <metamodelImports name="amalthea">
+    <package href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/amalthea.ecore#/"/>
+  </metamodelImports>
+  <metamodelImports name="ascet">
+    <package href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/ascet.ecore#/"/>
+  </metamodelImports>
+  <reactionsSegments name="amaltheaToAscet" fromMetamodels="//@metamodelImports.0" toMetamodels="//@metamodelImports.1">
+    <reactions name="ComponentContainerInsertedAsRoot">
+      <trigger xsi:type="language:ModelElementChange">
+        <elementType metamodel="//@metamodelImports.0">
+          <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/amalthea.ecore#//ComponentContainer"/>
+        </elementType>
+        <changeType xsi:type="language:ElementInsertionAsRootChangeType"/>
+      </trigger>
+      <callRoutine>
+        <code xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+          <feature xsi:type="types:JvmOperation" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gemini-2-5-pro/few_shots_AND_grammar_AND_helper/AmaltheaToAscet_ComponentContainerInsertedAsRoot.reactions#/0/@members.1"/>
+          <featureCallArguments xsi:type="xbase:XFeatureCall">
+            <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gemini-2-5-pro/few_shots_AND_grammar_AND_helper/AmaltheaToAscet_ComponentContainerInsertedAsRoot.reactions#/3/@members.2/@members.1/@parameters.1"/>
+          </featureCallArguments>
+        </code>
+      </callRoutine>
+    </reactions>
+    <routines name="createAndRegisterRootComponentContainer">
+      <input>
+        <modelInputElements metamodel="//@metamodelImports.0" name="createdComponentContainer">
+          <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/amalthea.ecore#//ComponentContainer"/>
+        </modelInputElements>
+      </input>
+      <matchBlock>
+        <matchStatements xsi:type="language:RequireAbscenceOfModelElement">
+          <elementType metamodel="//@metamodelImports.1">
+            <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/ascet.ecore#//AscetModule"/>
+          </elementType>
+          <correspondenceSource xsi:type="xbase:XFeatureCall">
+            <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gemini-2-5-pro/few_shots_AND_grammar_AND_helper/AmaltheaToAscet_ComponentContainerInsertedAsRoot.reactions#/2/@members.4/@members.2/@parameters.0"/>
+          </correspondenceSource>
+        </matchStatements>
+      </matchBlock>
+      <createBlock>
+        <createStatements metamodel="//@metamodelImports.1" name="newAscetModule">
+          <metaclass xsi:type="ecore:EClass" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/models/ascet.ecore#//AscetModule"/>
+        </createStatements>
+      </createBlock>
+      <updateBlock>
+        <code xsi:type="xbase:XBlockExpression">
+          <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+            <feature xsi:type="types:JvmOperation" href="java:/Objects/tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine#tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine$Update.persistProjectRelative(org.eclipse.emf.ecore.EObject,org.eclipse.emf.ecore.EObject,java.lang.String)"/>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gemini-2-5-pro/few_shots_AND_grammar_AND_helper/AmaltheaToAscet_ComponentContainerInsertedAsRoot.reactions#/2/@members.6/@members.1/@parameters.0"/>
+            </featureCallArguments>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gemini-2-5-pro/few_shots_AND_grammar_AND_helper/AmaltheaToAscet_ComponentContainerInsertedAsRoot.reactions#/2/@members.6/@members.1/@parameters.1"/>
+            </featureCallArguments>
+            <featureCallArguments xsi:type="xbase:XStringLiteral" value="model/ascet.ascet"/>
+          </expressions>
+          <expressions xsi:type="xbase:XFeatureCall" explicitOperationCall="true">
+            <feature xsi:type="types:JvmOperation" href="java:/Objects/tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine#tools.vitruv.dsls.reactions.runtime.routines.AbstractRoutine$Update.addCorrespondenceBetween(org.eclipse.emf.ecore.EObject,org.eclipse.emf.ecore.EObject)"/>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gemini-2-5-pro/few_shots_AND_grammar_AND_helper/AmaltheaToAscet_ComponentContainerInsertedAsRoot.reactions#/2/@members.6/@members.1/@parameters.1"/>
+            </featureCallArguments>
+            <featureCallArguments xsi:type="xbase:XFeatureCall">
+              <feature xsi:type="types:JvmFormalParameter" href="file:/home/arne/git/natural-language-artifacts/LLM-based%20code%20generation%20for%20MTL/Workflows/n8n-docker/mtl_snippets/reactions_language/responses/gemini-2-5-pro/few_shots_AND_grammar_AND_helper/AmaltheaToAscet_ComponentContainerInsertedAsRoot.reactions#/2/@members.6/@members.1/@parameters.0"/>
+            </featureCallArguments>
+          </expressions>
+        </code>
+      </updateBlock>
+    </routines>
+  </reactionsSegments>
+</toplevelelements:ReactionsFile>
