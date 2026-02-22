@@ -4,6 +4,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.m2m.atl.engine.parser.AtlParser;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AtlParserTest {
 
+    private static final String[] ATL_FILEPATH_PARTS = {"src", "test", "resources", "other_references"};
     private static final String[] ATL_FILES = {
         "AmaltheaToAscet_All.atl",
         "FamiliesToPersons_All.atl",
@@ -34,9 +37,12 @@ class AtlParserTest {
     void testParseAllAtlFiles() throws Exception {
         AtlParser parser = AtlParser.getDefault();
         List<String> failures = new ArrayList<>();
+        String atlFilePath = String.join(File.separator, ATL_FILEPATH_PARTS) + File.separator;
 
         for (String fileName : ATL_FILES) {
-            try (InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
+            try (InputStream input = new FileInputStream(
+                new File((atlFilePath + fileName)).getAbsoluteFile()
+            )) {
                 assertNotNull(input, "File not found: " + fileName);
 
                 EObject[] result = parser.parseWithProblems(input);
