@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class QVTOParserTest {
 
     private static final Path RESOURCE_DIR =
-            Paths.get("src/test/resources/transformation");
+            Paths.get("src/test/resources/transformation/reference/");
 
     static Stream<String> qvtoFiles() throws IOException {
         return Files.list(RESOURCE_DIR)
