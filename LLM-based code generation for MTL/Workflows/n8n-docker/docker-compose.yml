@@ -17,7 +17,7 @@ services:
       - "./few_shot_examples:/data/examples"
       - "./models:/data/models"
       - "./helper_methods:/data/helper_methods"
-      - "./Grammar:/data/grammar"
+      - "./grammar:/data/grammar"
 
 volumes:
   n8n_data:
