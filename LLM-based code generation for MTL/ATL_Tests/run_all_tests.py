@@ -49,15 +49,15 @@ FILE_TO_TEST = {
 
 def run_test(test_class: str) -> bool:
     """Run a single Maven test class. Returns True if the test passes."""
-    cmd = ["mvn", "test", f"-Dtest={test_class}", "-pl", ".", "-q", "--batch-mode"]
+    cmd = ["mvn", "clean", f"-Dtest={test_class}", "-pl", ".", "-q", "--batch-mode"]
     try:
         result = subprocess.run(
             cmd,
             cwd=PROJECT_DIR,
             capture_output=True,
             text=True,
-            timeout=120,
-            shell=True,
+            timeout=120
+            # shell=True,
         )
         return result.returncode == 0
     except subprocess.TimeoutExpired:
