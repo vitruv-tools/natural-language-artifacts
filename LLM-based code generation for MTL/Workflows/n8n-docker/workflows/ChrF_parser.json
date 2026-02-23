@@ -47,7 +47,7 @@
     {
       "parameters": {
         "executeOnce": false,
-        "command": "=cd ../../data\njava -jar parser/*-all.jar  snippets/responses/{{ $json.fileName }} snippets/out/{{ $json.fileName.split('.').slice(0,-1).join('.') }}.xmi models \n\n"
+        "command": "=cd ../../home/node/.n8n-files\njava -jar parser/*-all.jar  snippets/responses/{{ $json.fileName }} snippets/out/{{ $json.fileName.split('.').slice(0,-1).join('.') }}.xmi models \n\n"
       },
       "type": "n8n-nodes-base.executeCommand",
       "typeVersion": 1,
@@ -62,7 +62,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/snippets/reactions_language/references/*",
+        "fileSelector": "/home/node/.n8n-files/snippets/reactions_language/references/*",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -93,7 +93,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/snippets/reactions_language/responses/claude-sonnet-4/few_shots_AND_grammar_AND_helper/*",
+        "fileSelector": "/home/node/.n8n-files/snippets/reactions_language/responses/claude-sonnet-4/few_shots_AND_grammar_AND_helper/*",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",

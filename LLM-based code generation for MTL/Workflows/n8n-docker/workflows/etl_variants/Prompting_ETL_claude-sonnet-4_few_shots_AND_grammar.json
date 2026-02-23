@@ -36,7 +36,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/examples/etl/Examples.txt",
+        "fileSelector": "=/home/node/.n8n-files/examples/etl/Examples.txt",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -52,7 +52,7 @@
     {
       "parameters": {
         "operation": "write",
-        "fileName": "=/data/snippets/ETL_language/responses/claude-sonnet-4/few_shots_AND_grammar/{{ $node[\"Save file name\"].json.baseName }}.etl",
+        "fileName": "=/home/node/.n8n-files/snippets/ETL_language/responses/claude-sonnet-4/few_shots_AND_grammar/{{ $node[\"Save file name\"].json.baseName }}.etl",
         "dataPropertyName": "={{$node[\"(Re-)Generate code\"].json.text}}",
         "options": {}
       },
@@ -130,7 +130,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/grammar/etl/EBNF.txt",
+        "fileSelector": "/home/node/.n8n-files/grammar/etl/EBNF.txt",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -159,7 +159,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/snippets/ETL_language/prompts/*",
+        "fileSelector": "=/home/node/.n8n-files/snippets/ETL_language/prompts/*",
         "options": {
           "dataPropertyName": "data"
         }
@@ -191,7 +191,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/models/additional_models/ETL_model/*.ecore",
+        "fileSelector": "=/home/node/.n8n-files/models/additional_models/ETL_model/*.ecore",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -323,7 +323,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/helper_methods//*",
+        "fileSelector": "/home/node/.n8n-files/helper_methods//*",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",

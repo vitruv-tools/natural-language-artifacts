@@ -36,7 +36,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/snippets/ATLAS_transformation_language/references/*",
+        "fileSelector": "=/home/node/.n8n-files/snippets/ATLAS_transformation_language/references/*",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -68,7 +68,7 @@
     {
       "parameters": {
         "operation": "write",
-        "fileName": "=/data/snippets/ATLAS_transformation_language/prompts/{{ $node[\"Save reaction name\"].json.baseName }}.txt",
+        "fileName": "=/home/node/.n8n-files/snippets/ATLAS_transformation_language/prompts/{{ $node[\"Save reaction name\"].json.baseName }}.txt",
         "dataPropertyName": "={{ $('Generate Prompt from Input').item.json.text }}",
         "options": {
           "append": false
@@ -136,7 +136,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/grammar/atl/EBNF.txt",
+        "fileSelector": "/home/node/.n8n-files/grammar/atl/EBNF.txt",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -165,7 +165,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/models/*.ecore",
+        "fileSelector": "=/home/node/.n8n-files/models/*.ecore",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",

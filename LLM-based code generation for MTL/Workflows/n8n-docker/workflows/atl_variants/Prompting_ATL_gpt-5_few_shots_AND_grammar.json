@@ -36,7 +36,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/examples/atl/Examples.txt",
+        "fileSelector": "=/home/node/.n8n-files/examples/atl/Examples.txt",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -52,7 +52,7 @@
     {
       "parameters": {
         "operation": "write",
-        "fileName": "=/data/snippets/ATLAS_transformation_language/responses/gpt-5/few_shots_AND_grammar/{{ $node[\"Save file name\"].json.baseName }}.atl",
+        "fileName": "=/home/node/.n8n-files/snippets/ATLAS_transformation_language/responses/gpt-5/few_shots_AND_grammar/{{ $node[\"Save file name\"].json.baseName }}.atl",
         "dataPropertyName": "={{$node[\"(Re-)Generate code\"].json.text}}",
         "options": {}
       },
@@ -130,7 +130,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/grammar/atl/EBNF.txt",
+        "fileSelector": "/home/node/.n8n-files/grammar/atl/EBNF.txt",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -159,7 +159,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/snippets/ATLAS_transformation_language/prompts/*",
+        "fileSelector": "=/home/node/.n8n-files/snippets/ATLAS_transformation_language/prompts/*",
         "options": {
           "dataPropertyName": "data"
         }
@@ -191,7 +191,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/models/*.ecore",
+        "fileSelector": "=/home/node/.n8n-files/models/*.ecore",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -323,7 +323,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/helper_methods//*",
+        "fileSelector": "/home/node/.n8n-files/helper_methods//*",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",

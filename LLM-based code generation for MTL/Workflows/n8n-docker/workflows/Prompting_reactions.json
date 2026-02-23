@@ -36,7 +36,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/examples/reactions/Examples.txt",
+        "fileSelector": "=/home/node/.n8n-files/examples/reactions/Examples.txt",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -52,7 +52,7 @@
     {
       "parameters": {
         "operation": "write",
-        "fileName": "=/data/snippets/reactions_language/responses/claude-sonnet-4/{{ $node[\"Save reaction name\"].json.baseName }}.reactions",
+        "fileName": "=/home/node/.n8n-files/snippets/reactions_language/responses/claude-sonnet-4/{{ $node[\"Save reaction name\"].json.baseName }}.reactions",
         "dataPropertyName": "={{$node[\"(Re-)Generate code\"].json.text}}",
         "options": {}
       },
@@ -130,7 +130,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/grammar/reactions/EBNF.txt",
+        "fileSelector": "/home/node/.n8n-files/grammar/reactions/EBNF.txt",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -159,7 +159,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/snippets/reactions_language/prompts/*",
+        "fileSelector": "=/home/node/.n8n-files/snippets/reactions_language/prompts/*",
         "options": {
           "dataPropertyName": "data"
         }
@@ -214,7 +214,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "=/data/models/*.ecore",
+        "fileSelector": "=/home/node/.n8n-files/models/*.ecore",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
@@ -346,7 +346,7 @@
     },
     {
       "parameters": {
-        "fileSelector": "/data/helper_methods/reactions/*",
+        "fileSelector": "/home/node/.n8n-files/helper_methods/reactions/*",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
