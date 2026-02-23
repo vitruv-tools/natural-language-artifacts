@@ -86,6 +86,7 @@
     {
       "parameters": {
         "operation": "text",
+        "binaryPropertyName": "={{$node[\"Loop Over Items\"].binary.data}}",
         "options": {}
       },
       "type": "n8n-nodes-base.extractFromFile",
