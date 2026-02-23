@@ -95,7 +95,7 @@ def check_atl_syntax(atl_file_path):
         result = subprocess.run(
             [mvn_cmd, '-q', 'exec:java',
              '-Dexec.mainClass=com.example.atlparser.ATLParserMain',
-             f'-Dexec.args={atl_file_path}'],
+             f'-Dexec.args=\"{atl_file_path}\"'],
             cwd=SCRIPT_DIR,
             capture_output=True,
             text=True,
