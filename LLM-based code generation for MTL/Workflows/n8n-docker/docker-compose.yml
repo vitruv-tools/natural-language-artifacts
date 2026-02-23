@@ -13,11 +13,11 @@ services:
       # 1️⃣ keep n8n’s internal data (workflows, creds, etc.)
       - n8n_data:/home/node/.n8n
       # 2️⃣ **bind-mount** the folder you want n8n to read
-      - "./mtl_snippets:/data/snippets"
-      - "./few_shot_examples:/data/examples"
-      - "./models:/data/models"
-      - "./helper_methods:/data/helper_methods"
-      - "./grammar:/data/grammar"
+      - "./mtl_snippets:/home/node/.n8n-files/snippets"
+      - "./few_shot_examples:/home/node/.n8n-files/examples"
+      - "./models:/home/node/.n8n-files/models"
+      - "./helper_methods:/home/node/.n8n-files/helper_methods"
+      - "./grammar:/home/node/.n8n-files/grammar"
 
 volumes:
   n8n_data:
