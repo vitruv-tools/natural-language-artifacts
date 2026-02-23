@@ -57,7 +57,6 @@ def run_test(test_class: str) -> bool:
             capture_output=True,
             text=True,
             timeout=120
-            # shell=True,
         )
         return result.returncode == 0
     except subprocess.TimeoutExpired:
